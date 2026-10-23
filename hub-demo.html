@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Style Class Hub Demo</title>
+<style>
+:root{
+  --off:#F6F6F7; --blk:#000000; --gry:#D5D5D5; --navy:#0E1030; --grn:#038442;
+  --line:#E2E2E4; --dim:#8A8A90; --paper:#FFFFFF;
+  --alert:#8C1D18;
+  --f:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--off);color:var(--blk);font-family:var(--f);
+  font-size:15px;line-height:1.4;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:88px;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer}
+input,select{font-family:inherit;font-size:16px;color:inherit}
+
+/* ---------- header ---------- */
+/* ---------- sign in ---------- */
+.signin{
+  position:fixed;inset:0;z-index:200;background:var(--off);
+  display:flex;align-items:center;justify-content:center;
+  padding:28px 22px calc(28px + env(safe-area-inset-bottom));
+  overflow-y:auto;
+}
+.signin.gone{display:none}
+.signin-inner{width:100%;max-width:420px}
+.signin-mark{
+  font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  text-align:center;padding-bottom:16px;border-bottom:1px solid var(--blk);
+}
+.signin-lead{
+  font-size:24px;font-weight:600;letter-spacing:-.015em;line-height:1.2;
+  color:var(--blk);margin:28px 0 22px;
+}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:22px}
+.who{
+  padding:14px 12px;border:1px solid var(--gry);background:var(--paper);
+  text-align:left;font-size:14px;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+}
+.who:active{border-color:var(--blk)}
+.who .ini{
+  width:26px;height:26px;flex:0 0 auto;border-radius:50%;
+  background:var(--blk);color:var(--off);
+  font-size:10px;font-weight:600;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;
+}
+.who-other{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:20px}
+.who-other input{
+  flex:1;min-width:0;padding:14px 13px;border:1px solid var(--gry);
+  background:var(--paper);outline:none;
+}
+.who-other input:focus{border-color:var(--blk)}
+.who-other button{
+  padding:14px 18px;background:var(--blk);color:var(--off);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+  white-space:nowrap;
+}
+.who-other button:disabled{background:var(--gry);color:var(--dim)}
+.signin-note{
+  margin-top:22px;font-size:10px;letter-spacing:.05em;color:var(--dim);
+  text-align:center;line-height:1.5;
+}
+
+/* ---------- settings ---------- */
+#settings{z-index:210}
+.set-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:16px;border-bottom:1px solid var(--blk);
+}
+.set-title{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.set-back{
+  display:flex;align-items:center;gap:5px;width:52px;
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
+}
+.set-back svg{width:11px;height:11px;stroke:currentColor;stroke-width:1.7;
+  fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+.set-me{
+  display:flex;align-items:center;gap:12px;
+  margin:26px 0 10px;padding:16px;background:var(--paper);border:1px solid var(--line);
+}
+.set-me .ini{
+  width:34px;height:34px;flex:0 0 auto;border-radius:50%;
+  background:var(--blk);color:var(--off);
+  font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.set-me .nm{font-size:16px;font-weight:600}
+.set-me .sub{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);margin-top:2px}
+
+.set-sec{margin-top:34px}
+.set-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.set-note{
+  font-size:11px;line-height:1.5;color:var(--dim);
+  padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:4px;
+}
+.rrow{
+  display:flex;align-items:center;gap:11px;
+  padding:13px 0;border-bottom:1px solid var(--line);
+}
+.rrow .ini{
+  width:26px;height:26px;flex:0 0 auto;border-radius:50%;
+  background:var(--gry);color:var(--blk);
+  font-size:9px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.rrow.isme .ini{background:var(--blk);color:var(--off)}
+.rrow .nm{flex:1;font-size:14px;font-weight:500}
+.rrow .youtag{
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
+  border:1px solid var(--gry);padding:3px 7px;
+}
+.rrow .rm{
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--alert);padding:6px 8px;
+}
+.rrow .rm:disabled{color:var(--gry)}
+
+/* armed for removal */
+.rrow.arm{background:#FCF3F2;margin:0 -8px;padding:11px 8px;gap:8px}
+.rrow.arm .nm{font-size:13px;font-weight:600;color:var(--alert)}
+.rcancel{
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--dim);padding:8px 10px;border:1px solid var(--gry);background:var(--paper);
+}
+.rconfirm{
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:#fff;padding:8px 12px;background:var(--alert);
+}
+.rconfirm:active{opacity:.8}
+
+.set-add{display:flex;gap:8px;margin-top:18px}
+.set-add input{
+  flex:1;min-width:0;padding:13px;border:1px solid var(--gry);
+  background:var(--paper);outline:none;
+}
+.set-add input:focus{border-color:var(--blk)}
+.set-add button{
+  padding:13px 20px;background:var(--blk);color:var(--off);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+}
+.set-add button:disabled{background:var(--gry);color:var(--dim)}
+
+#setSwitch{margin-bottom:0;width:100%;display:block}
+
+/* who am I, in the header */
+.whoami{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;gap:6px;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+}
+.whoami .ini{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--blk);color:var(--off);
+  font-size:9px;font-weight:600;letter-spacing:.03em;
+  display:flex;align-items:center;justify-content:center;
+}
+header{position:sticky;top:0;z-index:40;background:var(--off);
+  border-bottom:1px solid var(--blk);padding:16px 18px 14px;}
+.title{
+  text-align:center;
+  font-size:13px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;
+}
+
+/* ---------- tabs ---------- */
+nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:50;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--off);border-top:1px solid var(--blk);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+nav button{
+  padding:16px 4px 18px;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);border-right:1px solid var(--line);
+}
+nav button:last-child{border-right:none}
+nav button.on{color:var(--blk);font-weight:600}
+nav button .badge{
+  display:inline-block;min-width:16px;margin-left:5px;padding:1px 4px;
+  background:var(--blk);color:var(--off);border-radius:8px;
+  font-size:9px;letter-spacing:0;font-weight:600;vertical-align:1px;
+}
+nav button.on .badge{background:var(--grn)}
+
+/* ---------- generic ---------- */
+.view{display:none}
+.view.on{display:block}
+.pad{padding:0 18px}
+.rule{height:1px;background:var(--line);margin:0}
+.rule-b{height:1px;background:var(--blk)}
+.eyebrow{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+}
+.h{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0}
+.dim{color:var(--dim)}
+.mono{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ---------- filter bar ---------- */
+.bar{
+  position:sticky;top:49px;z-index:30;background:var(--off);
+  border-bottom:1px solid var(--line);
+  display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;
+  align-items:center;
+  height:52px;padding:0 18px;
+}
+.bar::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+  padding:5px 6px 5px 13px;border:1px solid var(--gry);
+  border-radius:999px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  white-space:nowrap;color:var(--dim);
+}
+.chip.on{background:var(--blk);border-color:var(--blk);color:var(--off)}
+
+/* count bubble inside a chip */
+.chip .ct{
+  display:inline-block;min-width:20px;padding:2px 6px;
+  border-radius:999px;background:var(--gry);color:var(--blk);
+  font-size:10px;font-weight:600;letter-spacing:0;line-height:1.3;
+  text-align:center;font-variant-numeric:tabular-nums;
+}
+.chip.on .ct{background:var(--off);color:var(--blk)}
+/* the one count that should shout */
+.chip .ct.warn{background:var(--alert);color:#fff}
+.chip.on .ct.warn{background:#fff;color:var(--alert)}
+.chip .ct.zero{background:transparent;color:var(--dim);
+  box-shadow:inset 0 0 0 1px var(--gry)}
+.chip.on .ct.zero{color:rgba(246,246,247,.5);box-shadow:inset 0 0 0 1px rgba(246,246,247,.3)}
+/* chips with no count keep symmetric padding */
+.chip.bare{padding:6px 13px;gap:0}
+/* collection chips step back while a search is active */
+.bar.muted .chip{opacity:.4}
+.bar.muted .chip.on{opacity:.4}
+
+/* collection tag on a fabric group during search */
+.colltag{
+  margin-left:9px;padding:2px 7px;border:1px solid var(--gry);
+  border-radius:999px;font-size:8px;letter-spacing:.1em;
+  color:var(--dim);font-weight:400;vertical-align:1px;
+}
+/* ---------- action row: Filter | Select ---------- */
+.actionrow{
+  position:sticky;z-index:29;background:var(--off);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
+  height:44px;padding:0 18px;
+}
+#film-bar{top:119px}
+#actionrow{top:171px}
+#loc-coll{top:171px;height:44px;z-index:29}
+#locActionrow{top:215px;z-index:28}
+.bar-sub{background:var(--paper)}
+.bar-sub .chip{font-size:10px;padding:5px 11px}
+.bar-sub .chip.bare{padding:5px 11px}
+.arbtn{
+  display:flex;align-items:center;gap:7px;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  padding:7px 0;position:relative;
+}
+.arbtn.right{margin-left:auto}
+.arbtn .ic{width:13px;height:13px;stroke:currentColor;stroke-width:1.4;
+  fill:none;stroke-linecap:round;flex:0 0 auto}
+.dotmark{
+  width:5px;height:5px;border-radius:50%;background:var(--grn);
+  display:none;margin-left:1px;
+}
+.dotmark.on{display:block}
+.arcount{
+  flex:1;text-align:center;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.arcount.left{text-align:left}
+body.selecting .arbtn#filterBtn{opacity:.3;pointer-events:none}
+body.selecting #selectBtn{color:var(--grn)}
+body.locselecting #locSelectBtn{color:var(--grn)}
+
+/* ---------- filter panel ---------- */
+.panel{
+  display:none;background:var(--paper);
+  border-bottom:1px solid var(--blk);padding:18px;
+}
+.panel.on{display:block}
+.pgrp{margin-bottom:18px}
+.plab{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:9px;
+}
+.pchips{display:flex;flex-wrap:wrap;gap:7px}
+.pchips .chip{border-radius:999px}
+.pclear{
+  width:100%;padding:12px;border-top:1px solid var(--line);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+}
+
+/* ---------- selection bar ---------- */
+.selbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:var(--blk);color:var(--off);
+  transform:translateY(110%);transition:transform .2s ease-out;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+body.selecting #selbar{transform:none}
+body.locselecting #locSelbar{transform:none}
+.selbar-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 18px 11px;
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+}
+.selbar-top button{color:rgba(246,246,247,.6);font-weight:600;
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.selbar-note{
+  padding:0 18px 12px;font-size:10px;letter-spacing:.06em;
+  color:rgba(246,246,247,.5);line-height:1.4;display:none;
+}
+.selbar-note.on{display:block}
+.selbar-note b{color:#E8A0A0;font-weight:600}
+.selbar-acts{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.18)}
+.selbar-acts.two{grid-template-columns:repeat(2,1fr)}
+.selbar-acts button{
+  padding:17px 4px;color:var(--off);
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  border-right:1px solid rgba(255,255,255,.18);
+}
+.selbar-acts button:last-child{border-right:none}
+.selbar-acts button:disabled{opacity:.3}
+.selbar-acts button:active:not(:disabled){background:rgba(255,255,255,.14)}
+
+/* selection mode on the dots */
+body.selecting nav, body.locselecting nav{transform:translateY(100%)}
+nav{transition:transform .2s ease-out}
+body.selecting .dot{border-color:var(--gry)}
+body.selecting .dot.away{opacity:.3;pointer-events:none}
+.dot.pick{border-color:var(--blk);background:#EDEDEE;box-shadow:inset 0 0 0 1px var(--blk)}
+.dot .pickmark{
+  position:absolute;top:5px;left:5px;width:15px;height:15px;
+  border:1px solid var(--gry);border-radius:50%;background:var(--paper);
+  display:none;z-index:3;
+}
+body.selecting .dot:not(.away) .pickmark{display:block}
+.dot.pick .pickmark{background:var(--blk);border-color:var(--blk)}
+.dot.pick .pickmark::after{
+  content:"";position:absolute;left:4.5px;top:2.5px;width:3px;height:6.5px;
+  border:solid var(--off);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);
+}
+body.selecting .dot .tick{pointer-events:none;opacity:.45}
+
+/* selection mode on the locate rows */
+.row .rowpick{
+  width:18px;height:18px;flex:0 0 auto;
+  border:1px solid var(--gry);border-radius:50%;background:var(--paper);
+  position:relative;display:none;
+}
+body.locselecting .row .rowpick{display:block}
+.row.pick{background:#EDEDEE}
+.row.pick .rowpick{background:var(--blk);border-color:var(--blk)}
+.row.pick .rowpick::after{
+  content:"";position:absolute;left:5.5px;top:3px;width:4px;height:8px;
+  border:solid var(--off);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);
+}
+body.locselecting .row.overdue{background:#FCF3F2}
+body.locselecting .row.pick.overdue{background:#F5E4E2}
+
+body{padding-bottom:88px}
+body.selecting{padding-bottom:132px}
+body.locselecting{padding-bottom:150px}
+
+/* ---------- progress ---------- */
+.prog{padding:18px;border-bottom:1px solid var(--line)}
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.prog-n{font-size:30px;font-weight:300;letter-spacing:-.02em}
+.prog-n b{font-weight:600}
+.track{height:2px;background:var(--gry);position:relative;overflow:hidden}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--grn);transition:width .35s}
+
+/* ---------- fabric group (film view) ---------- */
+.fab{border-bottom:1px solid var(--line);padding:20px 18px 22px}
+.fab-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.fab-name{font-size:14px;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.fab-n{font-size:10px;letter-spacing:.1em;color:var(--dim);font-variant-numeric:tabular-nums}
+
+.style{margin-bottom:20px}
+.style:last-child{margin-bottom:0}
+.style-h{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:10px}
+.style-name{font-size:14px;font-weight:500;line-height:1.25}
+.style-sn{font-size:10px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* the signature: color dot grid */
+.dots{display:flex;flex-wrap:wrap;gap:8px}
+.dot{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;
+  width:76px;padding:9px 3px 8px;border:1px solid var(--line);background:var(--paper);
+  transition:border-color .12s,background .12s;
+}
+.dot .swatch{transition:transform .1s}
+.dot:active .swatch{transform:scale(.9)}
+.swatch{
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid rgba(0,0,0,.18);
+  position:relative;flex:0 0 auto;
+}
+.dot .cname{
+  font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);
+  text-align:center;line-height:1.25;height:20px;overflow:hidden;
+}
+/* filmed state */
+.dot.shot{background:#F0F0F0;border-color:var(--gry)}
+.dot.shot .swatch{opacity:.3}
+.dot.shot .cname{opacity:.4}
+.dot .tick{
+  position:absolute;top:0;right:0;width:22px;height:22px;
+  display:none;z-index:2;
+}
+.dot .tick svg{
+  position:absolute;top:4px;right:4px;width:14px;height:14px;
+  display:block;border-radius:50%;background:var(--grn);
+  pointer-events:none;transition:transform .1s;
+}
+.dot .tick svg path{
+  fill:none;stroke:#fff;stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.dot .tick:active svg{transform:scale(.85)}
+.dot.shot .tick{display:block}
+/* uploaded = ring on the tick */
+.dot.up .tick svg{box-shadow:0 0 0 2.5px var(--off),0 0 0 4px var(--grn)}
+/* not at 666 */
+.dot.away .swatch{filter:grayscale(1)}
+.dot .away-tag{
+  position:absolute;bottom:-1px;left:-1px;right:-1px;
+  background:var(--navy);color:#fff;font-size:7px;letter-spacing:.09em;
+  text-transform:uppercase;text-align:center;padding:2px 0;display:none;
+}
+.dot .away-tag.sent{background:#8A5A00}
+.dot.away .away-tag{display:block}
+.dot.away .cname{visibility:hidden}
+.dot.away{border-style:dashed;border-color:var(--gry);opacity:.55}
+
+/* ---------- locate view rows ---------- */
+.search{padding:13px 18px;border-bottom:1px solid var(--line);background:var(--off);
+  position:sticky;top:49px;z-index:31;height:70px}
+#loc-bar{top:119px;z-index:30}
+.search input{
+  width:100%;padding:11px 13px;border:1px solid var(--blk);background:var(--paper);
+  border-radius:0;outline:none;
+}
+.search input::placeholder{color:var(--dim)}
+
+/* ---------- location pill / dropdown ---------- */
+.locsel{
+  position:relative;display:inline-flex;align-items:center;gap:5px;
+  flex:0 0 auto;padding:5px 8px 5px 10px;border-radius:999px;
+  border:1px solid currentColor;white-space:nowrap;
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+}
+.locsel select{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;border:none;background:none;
+  font-size:16px;                       /* stops iOS zooming on focus */
+  -webkit-appearance:none;appearance:none;
+}
+.locsel-txt{pointer-events:none}
+.locsel svg{
+  width:8px;height:5px;flex:0 0 auto;pointer-events:none;
+  stroke:currentColor;stroke-width:1.4;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.6;
+}
+.locsel:focus-within{box-shadow:0 0 0 2px rgba(0,0,0,.08)}
+.locsel.big{
+  font-size:11px;padding:8px 12px 8px 14px;gap:7px;
+}
+.locsel.big svg{width:9px;height:6px}
+
+/* where it is decides the colour */
+.at666  {color:var(--grn)}
+.at100  {color:var(--navy)}
+.atsent {color:#8A5A00}
+.atstore{color:var(--alert)}
+.atflag {color:var(--dim)}
+.locsel.at666  {background:rgba(3,132,66,.06)}
+.locsel.at100  {background:rgba(14,16,48,.05)}
+.locsel.atsent {background:rgba(138,90,0,.07)}
+.locsel.atstore{background:rgba(140,29,24,.06)}
+.locsel.atflag {background:transparent;border-style:dashed}
+
+/* the row is now a flex wrapper around a button + the pill */
+.row{
+  display:flex;align-items:center;gap:10px;padding:0 14px 0 0;
+  border-bottom:1px solid var(--line);width:100%;
+}
+.rowmain{
+  flex:1;min-width:0;display:flex;align-items:center;gap:13px;
+  padding:14px 0 14px 18px;text-align:left;
+}
+.row .swatch{width:26px;height:26px}
+.row .body{flex:1;min-width:0}
+.row .r1{font-size:14px;font-weight:500;line-height:1.3}
+.row .r2{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-top:3px}
+.overdue{background:#FCF3F2}
+/* no fiddling with locations while picking rows */
+body.locselecting .locsel{opacity:.35;pointer-events:none}
+
+/* sheet meta: the Location row holds a pill */
+.metaloc{align-items:center !important;padding:7px 0 !important}
+
+/* Style Class pull rows keep a flat label */
+.p-s{
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;
+}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:60;display:none}
+.scrim.on{display:block}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--off);
+  border-top:1px solid var(--blk);padding:22px 18px calc(26px + env(safe-area-inset-bottom));
+  transform:translateY(100%);transition:transform .22s ease-out;
+  max-height:88vh;overflow-y:auto;
+}
+.sheet.on{transform:none}
+.sheet .grab{width:34px;height:2px;background:var(--gry);margin:0 auto 20px}
+.sheet-h{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.sheet-h .swatch{width:44px;height:44px}
+.sheet-title{font-size:19px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.sheet-sub{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+
+.statusbox{
+  border:1px solid var(--blk);background:var(--paper);
+  padding:12px 14px 11px;margin-bottom:20px;
+}
+.statusbox label{display:block;margin-bottom:7px}
+.statusbox select{
+  width:100%;border:none;background:none;outline:none;
+  font-size:16px;font-weight:500;padding:0;
+  appearance:none;-webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--blk) 50%),
+                   linear-gradient(135deg,var(--blk) 50%,transparent 50%);
+  background-position:calc(100% - 9px) 9px, calc(100% - 4px) 9px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+
+.hint{
+  display:flex;align-items:center;gap:10px;
+  margin-top:14px;padding:9px 11px;
+  background:var(--paper);border:1px solid var(--line);
+  font-size:10px;letter-spacing:.05em;color:var(--dim);line-height:1.4;
+}
+.hint.gone{display:none}
+body.selecting .hint{display:none}
+.hint button{margin-left:auto;font-size:16px;line-height:1;color:var(--dim);padding:0 2px}
+
+/* technical flat in the detail sheet */
+.flat{
+  background:var(--paper);border:1px solid var(--line);
+  padding:18px;margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;
+  min-height:150px;
+}
+.flat img{max-width:100%;max-height:190px;display:block;
+  mix-blend-mode:multiply;image-rendering:auto}
+.flat.noflat{
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim);background:transparent;border-style:dashed;
+}
+
+/* long-press feedback */
+.dot{
+  -webkit-touch-callout:none;user-select:none;-webkit-user-select:none;
+  touch-action:manipulation;
+}
+.dot.holding{
+  border-color:var(--blk);
+  transition:transform .38s cubic-bezier(.3,0,.4,1);
+  transform:scale(.9);
+}
+.dot.holding .swatch{transform:none}
+
+/* product link (unused in demo) */
+.shoplink{
+  display:flex;align-items:center;gap:12px;justify-content:space-between;
+  padding:15px 16px;border:1px solid var(--blk);background:var(--paper);
+  text-decoration:none;color:var(--blk);margin-bottom:9px;
+}
+.shoplink b{display:block;font-size:13px;font-weight:600;letter-spacing:.01em}
+.shoplink em{display:block;font-style:normal;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--dim);margin-top:3px}
+.shoplink svg{width:14px;height:14px;flex:0 0 auto;stroke:var(--blk);
+  stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.shoplink:active{background:#F0F0F1}
+.shoplink.sub{
+  border-color:var(--line);padding:12px 16px;margin-bottom:22px;
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
+}
+
+/* history log */
+.hist{border-top:1px solid var(--blk);margin-top:24px;padding-top:14px}
+.hist-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.hrow{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}
+.hrow:last-child{border-bottom:none}
+.hini{
+  width:24px;height:24px;flex:0 0 auto;border-radius:50%;
+  background:var(--gry);color:var(--blk);
+  font-size:9px;font-weight:600;letter-spacing:.03em;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.hbody{flex:1;min-width:0}
+.hwhat{font-size:13px;font-weight:500;line-height:1.3}
+.hmeta{font-size:10px;letter-spacing:.06em;color:var(--dim);margin-top:3px}
+.hempty{font-size:12px;color:var(--dim);padding:14px 0}
+
+.statusbox.ro{border-color:var(--line);background:#F0F0F1}
+.rostat{font-size:16px;font-weight:500}
+.rohint{font-size:10px;letter-spacing:.07em;color:var(--dim);margin-top:5px}
+
+.meta{border-top:1px solid var(--line);margin-bottom:22px}
+.meta div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
+.meta span:first-child{color:var(--dim);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding-top:2px}
+
+.acts{display:grid;gap:9px}
+.act{
+  padding:15px;border:1px solid var(--blk);text-align:center;
+  font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+}
+.act.fill{background:var(--blk);color:var(--off)}
+.act.warn{border-color:var(--alert);color:var(--alert)}
+.act.ghost{border-color:var(--gry);color:var(--dim)}
+
+/* ---------- style class ---------- */
+.slow{display:none;
+  background:var(--navy);color:var(--off);padding:20px 18px;
+}
+.slow .eyebrow{color:rgba(246,246,247,.55)}
+.slow h2{font-size:19px;font-weight:600;margin:5px 0 3px;letter-spacing:-.01em}
+.slow .sub{font-size:11px;color:rgba(246,246,247,.55);margin-bottom:17px}
+.slow-scroll{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;
+  margin:0 -18px;padding:0 18px 3px}
+.slow-scroll::-webkit-scrollbar{display:none}
+.slow-card{
+  flex:0 0 152px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.16);padding:13px;text-align:left;
+}
+.slow-card.used{border-color:var(--grn);background:rgba(3,132,66,.14)}
+.slow-card .swatch{width:22px;height:22px;margin-bottom:9px;border-color:rgba(255,255,255,.3)}
+.slow-card .sc-n{font-size:12px;font-weight:500;line-height:1.3;min-height:31px}
+.slow-card .sc-c{font-size:9px;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(246,246,247,.5);margin-top:6px}
+.slow-card .sc-st{
+  margin-top:11px;padding-top:9px;border-top:1px solid rgba(255,255,255,.16);
+  font-size:9px;letter-spacing:.09em;text-transform:uppercase;
+  display:flex;justify-content:space-between;
+}
+.slow-card .sc-st b{font-weight:600;font-variant-numeric:tabular-nums}
+.slow-card.used .sc-st{color:var(--grn)}
+
+.look{border-bottom:1px solid var(--line);padding:18px}
+.look-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.look-who{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.look-ring{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  border:1px solid var(--gry);padding:3px 7px}
+.pull{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid var(--line)}
+.pull .swatch{width:19px;height:19px}
+.pull .p-n{flex:1;font-size:13px;min-width:0}
+.pull .p-n em{font-style:normal;color:var(--grn);font-size:9px;letter-spacing:.09em;
+  text-transform:uppercase;margin-left:7px;font-weight:600}
+.pull .p-s{font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:600}
+
+.pulllist{padding:18px}
+.pl-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.pl-grp{margin-bottom:20px}
+.pl-grp:last-child{margin-bottom:0}
+.pl-lab{font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+  padding-bottom:7px;border-bottom:1px solid var(--blk);margin-bottom:2px}
+.pl-lab span{float:right;color:var(--dim);font-weight:400}
+
+.empty{padding:60px 30px;text-align:center;color:var(--dim);font-size:13px;line-height:1.55}
+.empty b{display:block;color:var(--blk);font-size:15px;font-weight:500;margin-bottom:7px}
+
+.toast{
+  position:fixed;left:50%;bottom:100px;transform:translate(-50%,14px);
+  background:var(--blk);color:var(--off);padding:11px 18px;
+  font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  opacity:0;pointer-events:none;transition:.2s;z-index:300;white-space:nowrap;
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="signin gone" id="settings">
+  <div class="signin-inner">
+    <div class="set-top">
+      <button class="set-back" id="setBack" aria-label="Back">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2L4 8l6 6"/></svg>
+        Back
+      </button>
+      <div class="set-title">Settings</div>
+      <div style="width:52px"></div>
+    </div>
+
+    <div class="set-me" id="setMe"></div>
+    <button class="act fill" id="setSwitch">Switch user</button>
+
+    <div class="set-sec">
+      <div class="set-h">
+        <span class="eyebrow">Sign-in list</span>
+        <span class="eyebrow dim" id="setCount"></span>
+      </div>
+      <div class="set-note">
+        Removing someone takes them off the sign-in screen. Everything they
+        already did stays recorded under their name.
+      </div>
+      <div id="setRoster"></div>
+      <div class="set-add">
+        <input id="setNew" placeholder="Add a name" autocomplete="off" maxlength="24">
+        <button id="setAdd" disabled>Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="signin" id="signin">
+  <div class="signin-inner">
+    <div class="signin-mark">Style Class Hub</div>
+    <div class="signin-lead">Who are you?</div>
+    <div class="who-grid" id="whoGrid"></div>
+    <div class="who-other">
+      <input id="whoOther" placeholder="Someone else — type a name" autocomplete="off" maxlength="24">
+      <button id="whoGo" disabled>Continue</button>
+    </div>
+    <div class="signin-note">Demo with sample data. Built by Maddie Cheng for Tibi's Style Class team; names, style numbers and sales data are changed or removed.</div>
+  </div>
+</div>
+
+<header>
+  <div class="title">Style Class Hub <span style="font-weight:400;color:var(--dim)">· Demo</span></div>
+  <button class="whoami" id="whoami" aria-label="Switch user"></button>
+</header>
+
+<!-- ============ FILM ============ -->
+<section class="view on" id="v-film">
+  <div class="search"><input id="fq" placeholder="Search style, name, or color" autocomplete="off"></div>
+  <div class="bar" id="film-bar"></div>
+  <div class="actionrow" id="actionrow">
+    <button class="arbtn" id="filterBtn">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ic">
+        <path d="M1 3h14M3.5 8h9M6.5 13h3"/></svg>
+      Filter<span class="dotmark" id="filterDot"></span>
+    </button>
+    <div class="arcount" id="arcount"></div>
+    <button class="arbtn right" id="selectBtn">Select</button>
+  </div>
+  <div class="panel" id="filterPanel">
+    <div class="pgrp">
+      <div class="plab">Filming</div>
+      <div class="pchips" id="pShot"></div>
+    </div>
+    <div class="pgrp">
+      <div class="plab">Upload</div>
+      <div class="pchips" id="pUp"></div>
+    </div>
+    <button class="pclear" id="clearFilters">Clear all</button>
+  </div>
+  <div class="prog">
+    <div class="eyebrow" id="p-label" style="margin-bottom:9px">Tolstoys</div>
+    <div class="prog-top">
+      <div class="prog-n"><b id="p-shot">0</b> <span class="dim">/ <span id="p-tot">0</span> shot</span></div>
+      <div class="eyebrow" id="p-up">0 uploaded</div>
+    </div>
+    <div class="track"><i id="p-bar" style="width:0%"></i></div>
+    <div class="hint" id="hint">
+      Tap a colour to advance its status. Hold to see the garment.
+      <button id="hintX" aria-label="Dismiss">×</button>
+    </div>
+  </div>
+  <div id="film-list"></div>
+</section>
+
+<!-- ============ LOCATE ============ -->
+<section class="view" id="v-loc">
+  <div class="search"><input id="q" placeholder="Search style, name, or color" autocomplete="off"></div>
+  <div class="bar" id="loc-bar"></div>
+  <div class="bar bar-sub" id="loc-coll"></div>
+  <div class="actionrow" id="locActionrow">
+    <div class="arcount left" id="locCount"></div>
+    <button class="arbtn right" id="locSelectBtn">Select</button>
+  </div>
+  <div id="loc-list"></div>
+</section>
+
+<!-- ============ CLASS ============ -->
+<section class="view" id="v-class">
+  <div class="slow">
+    <div class="eyebrow">Week of Jul 6</div>
+    <h2>Slow sellers</h2>
+    <div class="sub">Tap to mark one as used in this week's looks.</div>
+    <div class="slow-scroll" id="slow-list"></div>
+  </div>
+  <div class="pad" style="padding-top:20px;padding-bottom:6px">
+    <div class="eyebrow">This week</div>
+    <h1 class="h" style="margin-top:4px">Get Your Colors Done</h1>
+  </div>
+  <div id="looks"></div>
+  <div class="pulllist" id="pull"></div>
+</section>
+
+<div class="selbar" id="selbar">
+  <div class="selbar-top">
+    <span id="selCount">0 selected</span>
+    <button id="selAll">Select all shown</button>
+  </div>
+  <div class="selbar-acts">
+    <button data-set="none">Not shot</button>
+    <button data-set="shot">Shot</button>
+    <button data-set="up">Uploaded</button>
+  </div>
+</div>
+
+<div class="selbar" id="locSelbar">
+  <div class="selbar-top">
+    <span id="locSelCount">0 selected</span>
+    <button id="locSelAll">Select all shown</button>
+  </div>
+  <div class="selbar-note" id="locSelNote"></div>
+  <div class="selbar-acts">
+    <button data-move="Office A">Office A</button>
+    <button data-move="Office B">Office B</button>
+    <button data-move="Sent out">Sent out</button>
+  </div>
+</div>
+
+<nav>
+  <button class="on" data-v="film">Tolstoys<span class="badge" id="b-film">0</span></button>
+  <button data-v="loc">Locate</button>
+  <button data-v="class">Style class<span class="badge" id="b-class">0</span></button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const COLOR = {
+  'Black':'#000000','Burnt Umber':'#5C4640','White':'#FFFFFF','Dark Navy':'#0E1030',
+  'Heather Grey':'#A8A8A8','Mint':'#A8E4CE','Mustard':'#B8860B','Blue Multi':'#6E8CB0',
+  'Red':'#C8102E','Charcoal Heather Grey':'#4A4A4E','Clay':'#B5A78E','Bordeaux':'#5C2233',
+  'Grey':'#8C8C8C','Brown Multi':'#4A3A34','Dark Denim':'#2C3E56','Grey Multi':'#6E6E70',
+  'Brown':'#5A3A32','Black/Red Multi':'#3A2028','Baby Blue':'#A9CBE0','Burnt Brown':'#4A2C22',
+  'Tan':'#C9A96A','Dark Hazelnut':'#8A7350','Indigo':'#1F3050','Navy':'#0E1030',
+  'Acid Blue':'#9EBBD6','Vintage Black':'#3A3A3C','Army Green':'#5A5C3A','Dark Heather Grey':'#5A5A5E',
+  'Dark Grey':'#4A4A4C','Charcoal Grey':'#4A4A4E','Cedar Multi':'#8A6B4A','Dark Stone Melange':'#8C8070',
+  'Newman Blue':'#2E5C8A','Black Multi':'#2A2A2C','Ivory':'#F2EDE2','Loden':'#3A4230',
+  'Blue Fog':'#4A6076','Cinnamon':'#7A2E3E','Pumice Grey':'#9A9A96','Classic Wash':'#7FA0BE',
+  'Midnight Navy':'#141830','Bleach Blue':'#9AAAB4','Dark Stone':'#6E6458','Sage':'#A8B092',
+  'Olive':'#4A4E3A','Pink':'#EEDCE4','Caramel Latte':'#8A5C3A','Oatmeal Melange':'#C4B8A0',
+  'White Multi':'#DEDEDA','Hickory Brown':'#3A241C','Blue Melange':'#8098B8','Bubble Gum Pink':'#C4707E',
+  'Light Heather Grey':'#C0C0BC','Pea Pod':'#C8CC66','Cedar Melange':'#B08878','Greystone':'#B4B0A8',
+  'Butterscotch':'#9A6A4E','Dune':'#3E3A34','Plum-ish':'#6E5060','Dusty Navy':'#4E5C82',
+  'Avocado':'#6A8A46','Bright Navy':'#3A5080','Pewter':'#9A9086'
+};
+const COLL = {'F126':'Fall 1','T00':'Fundamentals','R125':'Resort','S126':'Spring','U126':'Summer'};
+
+
+const SKETCH = {};   /* line sheet drawings removed for the public demo */
+
+const STYLES = [
+{sn:'F1-101',name:'Active Knit Sporty Stirrup',fab:'Active Knit',coll:'F126',sizes:'XXS-XL',price:575,colors:['Black','Burnt Umber']},
+{sn:'F1-102',name:'Active Knit Easy Drape Sleeve T',fab:'Active Knit',coll:'F126',sizes:'XXS-XL',price:495,colors:['Black','Burnt Umber','White']},
+{sn:'F1-103',name:'Bonded Viscose Tank Top',fab:'Bonded Viscose',coll:'F126',sizes:'00-14',price:465,colors:['Dark Navy','Heather Grey']},
+{sn:'F1-104',name:'Bonded Viscose Crewneck with Folded Panel',fab:'Bonded Viscose',coll:'F126',sizes:'XXS-XL',price:595,colors:['Dark Navy','Heather Grey']},
+{sn:'F1-105',name:'Creased Acetate Drape Dress',fab:'Creased Acetate Drape',coll:'F126',sizes:'XXS-XL',price:895,colors:['Black','Mint']},
+{sn:'F1-106',name:'Creased Acetate Drape Cape Top',fab:'Creased Acetate Drape',coll:'F126',sizes:'XS/S-M/L',price:545,colors:['Black']},
+{sn:'F1-107',name:'Creased Acetate Drape Cape Tie Top',fab:'Creased Acetate Drape',coll:'F126',sizes:'XS/S-M/L',price:545,colors:['Black']},
+{sn:'F1-111',name:'Eco Acetate Viscose Trouser',fab:'Eco Acetate Viscose',coll:'F126',sizes:'00-14 (S/R)',price:575,colors:['Black','Mustard']},
+{sn:'F1-112',name:'Eco Acetate Viscose Front Drape Culotte',fab:'Eco Acetate Viscose',coll:'F126',sizes:'00-14',price:595,colors:['Black','Mustard']},
+{sn:'F1-113',name:'Eco Acetate Viscose Side Drape Short',fab:'Eco Acetate Viscose',coll:'F126',sizes:'00-14',price:565,colors:['Black','Mustard']},
+{sn:'F1-114',name:'Eco Acetate Viscose Easy Tshirt with Slit Detail',fab:'Eco Acetate Viscose',coll:'F126',sizes:'XXS-XL',price:445,colors:['Black','Mustard']},
+{sn:'F1-115',name:'Eco Acetate Viscose Wrap Shirt Jacket',fab:'Eco Acetate Viscose',coll:'F126',sizes:'XXS-XL',price:695,colors:['Black','Mustard']},
+{sn:'F1-108',name:'Eco Poplin Side Drape Top',fab:'Eco Poplin',coll:'F126',sizes:'00-14',price:395,colors:['Black','White']},
+{sn:'F1-109',name:'Eco Poplin Easy Shirt with Flap Detail',fab:'Eco Poplin',coll:'F126',sizes:'XXS-XL',price:475,colors:['Black','White']},
+{sn:'F1-110',name:'Lyocell Stripe Oversized Shirt',fab:'Lyocell Stripe',coll:'F126',sizes:'XXS-XL',price:445,colors:['Blue Multi']},
+{sn:'F1-116',name:'Fall Nylon Snap Bomber',fab:'Fall Nylon',coll:'F126',sizes:'XXS-XL',price:1095,colors:['Red']},
+{sn:'F1-119',name:'Feather Weight Ribbed Cut Out Tank',fab:'Feather Weight Ribbed Sweater',coll:'F126',sizes:'XXS-XL',price:375,colors:['Black','Charcoal Heather Grey','Clay']},
+{sn:'F1-120',name:'Feather Weight Ribbed Vneck Slim Cardigan',fab:'Feather Weight Ribbed Sweater',coll:'F126',sizes:'XXS-XL',price:445,colors:['Black','Charcoal Heather Grey','Clay']},
+{sn:'F1-117',name:'Feather Weight Viscose Neoprene Short Sleeve Baseball T',fab:'Feather Weight Viscose Neoprene',coll:'F126',sizes:'XXS-XL',price:425,colors:['Black','Bordeaux','Grey']},
+{sn:'F1-118',name:'Feather Weight Viscose Neoprene Short Sleeve T',fab:'Feather Weight Viscose Neoprene',coll:'F126',sizes:'XXS-XL',price:375,colors:['Black','Bordeaux','Grey']},
+{sn:'F1-122',name:'Gossamer Wool Melange Blazer',fab:'Gossamer Wool Melange',coll:'F126',sizes:'00-14',price:1195,colors:['Heather Grey']},
+{sn:'F1-121',name:'Gossamer Wool Melange Zip Midi Trouser Skirt',fab:'Gossamer Wool Melange',coll:'F126',sizes:'00-14',price:895,colors:['Heather Grey']},
+{sn:'F1-123',name:'Herringbone Suiting Slim Trouser',fab:'Herringbone Suiting',coll:'F126',sizes:'00-14',price:645,colors:['Brown Multi']},
+{sn:'F1-124',name:'Herringbone Suiting Side Drape Pleated Pant',fab:'Herringbone Suiting',coll:'F126',sizes:'00-14',price:795,colors:['Brown Multi']},
+{sn:'F1-125',name:'Herringbone Suiting Short',fab:'Herringbone Suiting',coll:'F126',sizes:'00-14',price:595,colors:['Brown Multi']},
+{sn:'F1-126',name:'Herringbone Suiting Vest',fab:'Herringbone Suiting',coll:'F126',sizes:'00-14',price:595,colors:['Brown Multi']},
+{sn:'F1-127',name:'Herringbone Suiting Easy Mens Blazer',fab:'Herringbone Suiting',coll:'F126',sizes:'XXS-L',price:1295,colors:['Brown Multi']},
+{sn:'F1-128',name:'Herringbone Suiting Cropped Blazer',fab:'Herringbone Suiting',coll:'F126',sizes:'XXS-L',price:995,colors:['Brown Multi']},
+{sn:'F1-129',name:'Indigo Denim Trouser',fab:'Indigo Denim',coll:'F126',sizes:'24-32 (S/R)',price:545,colors:['Dark Denim']},
+{sn:'F1-130',name:'Indigo Denim Double Apron Skirt',fab:'Indigo Denim',coll:'F126',sizes:'00-14',price:695,colors:['Dark Denim']},
+{sn:'F1-132',name:'Papery Wool Plaid Easy Mens Blazer',fab:'Papery Wool Plaid',coll:'F126',sizes:'XXS-L',price:1295,colors:['Grey Multi']},
+{sn:'F1-131',name:'Papery Wool Plaid Double Apron Skirt',fab:'Papery Wool Plaid',coll:'F126',sizes:'00-14',price:875,colors:['Grey Multi']},
+{sn:'F1-133',name:'Perfect T Unisex Double Layer Long Sleeve Tshirt',fab:'Perfect T',coll:'F126',sizes:'XS-XL',price:285,colors:['Brown','Heather Grey','White']},
+{sn:'F1-147',name:'Sheer Wool Gauze Check Cape Top',fab:'Sheer Wool Gauze Check',coll:'F126',sizes:'XS/S-M/L',price:485,colors:['Heather Grey']},
+{sn:'F1-135',name:'Silk Cotton Plaid Blouse with Removable Tie',fab:'Silk Cotton Plaid',coll:'F126',sizes:'00-14',price:595,colors:['Black/Red Multi']},
+{sn:'F1-136',name:'Silk Cotton Plaid Cape Tie Top',fab:'Silk Cotton Plaid',coll:'F126',sizes:'XS/S-M/L',price:485,colors:['Black/Red Multi']},
+{sn:'F1-137',name:'Silk Cotton Plaid Funnel Neck Shirt',fab:'Silk Cotton Plaid',coll:'F126',sizes:'XXS-XL',price:575,colors:['Black/Red Multi']},
+{sn:'F1-138',name:'Slinky Viscose Perfect Mens Pullover',fab:'Slinky Viscose Sweaters',coll:'F126',sizes:'XXS-XL',price:695,colors:['Baby Blue','Grey']},
+{sn:'F1-139',name:'Slinky Viscose Perfect Mens Tneck Pullover',fab:'Slinky Viscose Sweaters',coll:'F126',sizes:'XXS-XL',price:725,colors:['Baby Blue','Grey']},
+{sn:'F1-134',name:'Stretch Light Weight Tech Knit Strappy Racerback Bodysuit',fab:'Stretch Light Weight Tech Knit',coll:'F126',sizes:'XXS-XL',price:195,colors:['Black','Burnt Brown','Tan']},
+{sn:'F1-146',name:'Techy Plaid Easy Shirt Jacket',fab:'Techy Plaid',coll:'F126',sizes:'XXS-XL',price:995,colors:['Blue Multi']},
+{sn:'F1-145',name:'Techy Twill Coat with Hood',fab:'Techy Twill',coll:'F126',sizes:'XXS-XL',price:1395,colors:['Dark Hazelnut']},
+{sn:'F1-144',name:'Techy Twill Trapeze Anorak Bomber',fab:'Techy Twill',coll:'F126',sizes:'XXS-XL',price:895,colors:['Dark Hazelnut']},
+{sn:'F1-143',name:'Techy Twill Pull On Midi Skirt',fab:'Techy Twill',coll:'F126',sizes:'XXS-XL',price:495,colors:['Dark Hazelnut']},
+{sn:'F1-142',name:'Techy Twill Pull On Mini Skirt',fab:'Techy Twill',coll:'F126',sizes:'XXS-XL',price:445,colors:['Dark Hazelnut']},
+{sn:'F1-140',name:'Tencel Cotton Denim Jean',fab:'Tencel Cotton Denim',coll:'F126',sizes:'24-32',price:645,colors:['Indigo']},
+{sn:'F1-141',name:'Tencel Cotton Denim Slim Jean',fab:'Tencel Cotton Denim',coll:'F126',sizes:'24-32',price:545,colors:['Indigo']},
+{sn:'FD-148',name:'Active Knit Shorts',fab:'Active Knit',coll:'T00',sizes:'XXS-XL',price:425,colors:['Black','Navy','Red']},
+{sn:'FD-161',name:'Black Denim Jean',fab:'Black Denim',coll:'T00',sizes:'24-32',price:475,colors:['Black']},
+{sn:'FD-151',name:'Cashmere Suiting Asymmetrical Pleat Pant',fab:'Cashmere Suiting',coll:'T00',sizes:'00-14',price:1695,colors:['Black']},
+{sn:'FD-152',name:"Cashmere Suiting Classic Men's Shirt",fab:'Cashmere Suiting',coll:'T00',sizes:'XS-XL',price:1395,colors:['Black']},
+{sn:'FD-153',name:'Cashmere Suiting Easy Tshirt',fab:'Cashmere Suiting',coll:'T00',sizes:'XXS-XL',price:1195,colors:['Black']},
+{sn:'FD-154',name:'Cashmere Suiting Blazer',fab:'Cashmere Suiting',coll:'T00',sizes:'XXS-L',price:2450,colors:['Black']},
+{sn:'FD-149',name:'Circular Fine GG Rib Ribbed Tank Top',fab:'Circular Fine GG Rib',coll:'T00',sizes:'XXS-XL',price:150,colors:['Black','Navy','White','Blue Fog','Heather Grey','Cinnamon','Pumice Grey']},
+{sn:'FD-150',name:'Circular Fine GG Rib Crewneck Pullover',fab:'Circular Fine GG Rib',coll:'T00',sizes:'XXS-XL',price:170,colors:['Black','Navy','White','Blue Fog','Heather Grey','Cinnamon','Pumice Grey']},
+{sn:'FD-163',name:'Classic Wash Denim Jean',fab:'Classic Wash Denim',coll:'T00',sizes:'24-32',price:475,colors:['Classic Wash']},
+{sn:'FD-191',name:'Compact Ultra Stretch Knit Sleeveless Dress',fab:'Compact Ultra Stretch Knit',coll:'T00',sizes:'00-14',price:645,colors:['Black','Brown','Red']},
+{sn:'FD-193',name:'Compact Ultra Stretch Knit Pencil Skirt',fab:'Compact Ultra Stretch Knit',coll:'T00',sizes:'00-14',price:395,colors:['Black','Brown','Red']},
+{sn:'FD-194',name:'Compact Ultra Stretch Knit Long Sleeve Slim Top',fab:'Compact Ultra Stretch Knit',coll:'T00',sizes:'XXS-XL',price:395,colors:['Black','Brown','Red']},
+{sn:'FD-192',name:'Compact Ultra Stretch Knit Stirrup',fab:'Compact Ultra Stretch Knit',coll:'T00',sizes:'00-14',price:445,colors:['Black']},
+{sn:'FD-155',name:'Crinkle Shirting Oversized Shirt',fab:'Crinkle Shirting',coll:'T00',sizes:'XXS-XL',price:495,colors:['Midnight Navy','White']},
+{sn:'FD-156',name:'Crinkle Shirting Easy Tshirt',fab:'Crinkle Shirting',coll:'T00',sizes:'XXS-XL',price:385,colors:['Midnight Navy','White']},
+{sn:'FD-166',name:'Crispy Nylon Trouser',fab:'Crispy Nylon',coll:'T00',sizes:'00-14',price:425,colors:['Black','Navy']},
+{sn:'FD-167',name:'Crispy Nylon Pant',fab:'Crispy Nylon',coll:'T00',sizes:'XXS-XL (S/R)',price:445,colors:['Black','Navy']},
+{sn:'FD-168',name:'Crispy Nylon Pull On Jogger',fab:'Crispy Nylon',coll:'T00',sizes:'XXS-XL (R/L)',price:395,colors:['Black','Navy']},
+{sn:'FD-169',name:'Crispy Nylon Maxi Trouser Skirt',fab:'Crispy Nylon',coll:'T00',sizes:'00-14',price:395,colors:['Black','Navy']},
+{sn:'FD-170',name:'Crispy Nylon Blazer',fab:'Crispy Nylon',coll:'T00',sizes:'XXS-L',price:645,colors:['Navy','White']},
+{sn:'FD-171',name:'Crispy Nylon Hooded Coat',fab:'Crispy Nylon',coll:'T00',sizes:'XXS-L',price:695,colors:['Navy','White']},
+{sn:'FD-162',name:"Denim Shirting Slim Men's Shirt",fab:'Denim Shirting',coll:'T00',sizes:'XXS-XL',price:475,colors:['Bleach Blue']},
+{sn:'FD-164',name:'Feather Weight Pleating Pull On Skirt',fab:'Feather Weight Pleating',coll:'T00',sizes:'XXS-XL',price:495,colors:['Black','Dark Stone','Sage']},
+{sn:'FD-165',name:'Garment Washed Twill Slouchy Carpenter Jean',fab:'Garment Washed Twill',coll:'T00',sizes:'24-32',price:495,colors:['Brown']},
+{sn:'FD-203',name:'Light Weight Sweatshirting Pant',fab:'Light Weight Sweatshirting',coll:'T00',sizes:'XXS-XL (S/R)',price:245,colors:['Black','White','Olive','Red']},
+{sn:'FD-204',name:'Light Weight Sweatshirting Sleeveless Sweatshirt',fab:'Light Weight Sweatshirting',coll:'T00',sizes:'XXS-XL',price:195,colors:['Black','White','Olive','Red']},
+{sn:'FD-205',name:'Light Weight Sweatshirting Crewneck Easy Sweatshirt',fab:'Light Weight Sweatshirting',coll:'T00',sizes:'XXS-XL',price:275,colors:['Black','White','Olive','Red']},
+{sn:'FD-173',name:'New Shirting Oversized Shirting',fab:'New Shirting',coll:'T00',sizes:'XXS-XL',price:375,colors:['Pink']},
+{sn:'FD-174',name:"New Shirting Slim Men's Shirt",fab:'New Shirting',coll:'T00',sizes:'XXS-XL',price:375,colors:['Pink']},
+{sn:'FD-172',name:'Nylon Lantern Skirt',fab:'Nylon',coll:'T00',sizes:'00-14 (S/R)',price:495,colors:['Black','Caramel Latte','White']},
+{sn:'FD-175',name:'Perfect T Vintage V Neck Sweatshirt',fab:'Perfect T',coll:'T00',sizes:'XXS-XL',price:255,colors:['Charcoal Grey','Heather Grey','White']},
+{sn:'FD-176',name:'Reactive Dyed Stretch Twill Chino Pant',fab:'Reactive Dyed Stretch Twill',coll:'T00',sizes:'24-32 (S/R)',price:495,colors:['Bright Navy','Pewter']},
+{sn:'FD-179',name:'Selvage Denim 5 Pocket Jean',fab:'Selvage Denim',coll:'T00',sizes:'24-32',price:545,colors:['Dark Denim','Classic Wash']},
+{sn:'FD-201',name:'Sheer Wool Gauze Oversized Shirt',fab:'Sheer Wool Gauze',coll:'T00',sizes:'XXS-XL',price:425,colors:['Black','Oatmeal Melange']},
+{sn:'FD-202',name:'Sheer Wool Gauze Easy Tshirt',fab:'Sheer Wool Gauze',coll:'T00',sizes:'XXS-XL',price:345,colors:['Black','Oatmeal Melange']},
+{sn:'FD-198',name:'Spring Tweedy Sweatshirting Pant',fab:'Spring Tweedy Sweatshirting',coll:'T00',sizes:'XXS-XL (S/R)',price:275,colors:['White Multi']},
+{sn:'FD-199',name:'Spring Tweedy Sweatshirting Sleeveless Sweatshirt',fab:'Spring Tweedy Sweatshirting',coll:'T00',sizes:'XXS-XL',price:215,colors:['White Multi']},
+{sn:'FD-200',name:'Spring Tweedy Sweatshirting Crewneck Easy Sweatshirt',fab:'Spring Tweedy Sweatshirting',coll:'T00',sizes:'XXS-XL',price:285,colors:['White Multi']},
+{sn:'FD-177',name:'Stretch Light Tech Knit Slim Long Sleeve T',fab:'Stretch Light Tech Knit',coll:'T00',sizes:'XXS-XL',price:245,colors:['Hickory Brown','White']},
+{sn:'FD-178',name:'Stretch Light Tech Knit Short Sleeve T',fab:'Stretch Light Tech Knit',coll:'T00',sizes:'XXS-XL',price:225,colors:['Hickory Brown','White']},
+{sn:'FD-180',name:"Super Fine Gauge Cotton Perfect Men's Tneck Pullover",fab:'Super Fine Gauge Cotton',coll:'T00',sizes:'XXS-XL',price:495,colors:['Blue Melange','Bubble Gum Pink','Light Heather Grey']},
+{sn:'FD-181',name:"Super Fine Gauge Cotton Perfect Men's Vneck Pullover",fab:'Super Fine Gauge Cotton',coll:'T00',sizes:'XXS-XL',price:495,colors:['Blue Melange','Bubble Gum Pink','Light Heather Grey']},
+{sn:'FD-157',name:'The Crinkle Slip Slip Dress',fab:'The Crinkle Slip',coll:'T00',sizes:'00-14',price:445,colors:['Dark Grey','Pea Pod']},
+{sn:'FD-158',name:'The Crinkle Slip Midi Bias Dress',fab:'The Crinkle Slip',coll:'T00',sizes:'00-14',price:495,colors:['Dark Grey','Pea Pod']},
+{sn:'FD-159',name:'The Crinkle Slip Slip Skirt',fab:'The Crinkle Slip',coll:'T00',sizes:'XXS-XL',price:395,colors:['Dark Grey','Pea Pod']},
+{sn:'FD-160',name:'The Crinkle Slip Cami',fab:'The Crinkle Slip',coll:'T00',sizes:'00-14',price:285,colors:['Dark Grey','Pea Pod']},
+{sn:'FD-185',name:'Tropical Wool Pant',fab:'Tropical Wool',coll:'T00',sizes:'00-14',price:495,colors:['Black','Cedar Melange','Navy']},
+{sn:'FD-186',name:'Tropical Wool Jogger',fab:'Tropical Wool',coll:'T00',sizes:'XXS-XL (S/R)',price:445,colors:['Black','Cedar Melange','Navy']},
+{sn:'FD-187',name:'Tropical Wool Maxi Trouser Skirt',fab:'Tropical Wool',coll:'T00',sizes:'00-14',price:395,colors:['Black','Cedar Melange','Navy']},
+{sn:'FD-188',name:'Tropical Wool Blazer',fab:'Tropical Wool',coll:'T00',sizes:'XXS-L',price:750,colors:['Black','Cedar Melange','Navy']},
+{sn:'FD-189',name:'Tropical Wool Sculpted Blazer',fab:'Tropical Wool',coll:'T00',sizes:'00-14',price:795,colors:['Black','Navy']},
+{sn:'FD-190',name:'Tropical Wool Blazer',fab:'Tropical Wool',coll:'T00',sizes:'00-14',price:795,colors:['Black','Navy']},
+{sn:'FD-183',name:'Tshirt Program Mock Neck Unisex T',fab:'Tshirt Program',coll:'T00',sizes:'XS-XL',price:160,colors:['White','Greystone','Butterscotch','Dune','Plum-ish','Dusty Navy','Pumice Grey']},
+{sn:'FD-182',name:'Tshirt Program Padded Shoulder Sleeveless Top',fab:'Tshirt Program',coll:'T00',sizes:'XXS-XL',price:175,colors:['Dark Navy','Pumice Grey','White']},
+{sn:'FD-184',name:'Tshirt Program Shirred Circular Top',fab:'Tshirt Program',coll:'T00',sizes:'XXS-XL',price:255,colors:['Dark Navy','Pumice Grey','White']},
+{sn:'FD-195',name:'Washable Cashmere Easy Vneck Sweater',fab:'Washable Cashmere',coll:'T00',sizes:'XXS-XL',price:565,colors:['Avocado','Heather Grey','Navy']},
+{sn:'FD-196',name:'Washable Cashmere Cut Out Sleeve Crewneck Sweater',fab:'Washable Cashmere',coll:'T00',sizes:'XXS-XL',price:595,colors:['Avocado','Heather Grey','Navy']},
+{sn:'FD-197',name:'Washable Cashmere Oversized Easy T Polo Sweater',fab:'Washable Cashmere',coll:'T00',sizes:'XXS-XL',price:565,colors:['Avocado','Heather Grey','Navy']}
+];
+
+/* ---- build the record table: one row per style+color ---- */
+/* Tolstoys groups by fabric, so strip a leading fabric prefix when it matches
+   exactly. Six client-sheet names don't ("Cedrick" vs "Cedric") — those keep
+   their full name rather than get a bad trim. */
+function shortName(name, fab){
+  const p = fab.toLowerCase(), n = name.toLowerCase();
+  if (n.startsWith(p + ' ')) return name.slice(fab.length + 1);
+  return name;
+}
+
+const R = [];
+STYLES.forEach(s => s.colors.forEach(c => {
+  R.push({id:s.sn+'|'+c, sn:s.sn, name:s.name, short:shortName(s.name, s.fab),
+    fab:s.fab, coll:s.coll,
+    sizes:s.sizes, price:s.price, color:c,
+    loc:'Office A', holder:'', store:false, due:null, shot:false, up:false, hist:[]});
+}));
+
+/* ---- seed a sample starting state ---- */
+const H = s => {let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)};
+R.forEach(r => {
+  const h = H(r.id);
+  if (r.coll === 'F126') {                       // Fall 1 is the collection in flight
+    if (h % 100 < 62) { r.shot = true; r.up = (h%100) < 48; }
+    if (h % 100 >= 88) { r.loc = 'Office B'; }
+  } else if (r.coll === 'T00') {                  // Fundamentals: mostly done
+    if (h % 100 < 90) { r.shot = true; r.up = true; }
+    if (h % 100 >= 94) { r.loc = 'Office B'; }
+  }
+});
+
+/* sample store loans, some overdue */
+const STORE_PULLS = [
+  ['F1-133','White',      'Riley','2026-06-15', true ],
+  ['FD-185','Black',      'Riley','2026-06-15', true ],
+  ['FD-190','Navy',       'Riley','2026-06-15', true ],
+  ['F1-102','Black',      'Riley','2026-06-09', true ],
+  ['F1-134','Black',      'Riley','2026-06-16', false],
+  ['FD-197','Heather Grey','Riley','2026-06-16',false],
+  ['F1-143','Dark Hazelnut','Alex',  '2026-07-07', false],
+  ['F1-123','Brown Multi','Alex',    '2026-07-07', false],
+  ['FD-179','Dark Denim', 'Alex',    '2026-07-07', false]
+];
+STORE_PULLS.forEach(([sn,c,who,d,old])=>{
+  const r = R.find(x=>x.id===sn+'|'+c);
+  if(!r) return;
+  r.loc='Office A'; r.store=true; r.holder=who;
+  const due = new Date(d); due.setDate(due.getDate()+ (old?7:14));
+  r.due = due.toISOString().slice(0,10);
+  r.hist.push({ts:new Date(d+'T10:30:00').getTime(), who, what:'Pulled from Flagship'});
+});
+
+/* a few checked out to other teams */
+[['F1-122','Heather Grey','PR'],['F1-116','Red','Marketing'],
+ ['F1-146','Blue Multi','Media']].forEach(([sn,c,t])=>{
+  const r=R.find(x=>x.id===sn+'|'+c); if(r){r.loc='Sent out';r.holder=t;}
+});
+
+/* Backfill a plausible trail so the history isn't empty on first open.
+   Who did what is derived from the same hash that set the state. */
+const FILMERS = ['Alex','Alex','Alex','Sam','Riley'];
+const DAY = 864e5;
+R.forEach(r => {
+  if (!r.shot) return;
+  const h = H(r.id);
+  const now = Date.now();
+  const shotAgo = 3 + (h % 22);                       // 3–24 days ago
+  const shotTs  = now - shotAgo*DAY;
+  r.hist.push({ts: shotTs, who: FILMERS[h % FILMERS.length], what:'Not shot → Shot'});
+  if (r.up){
+    const upTs = shotTs + (1 + (h>>3) % 3) * DAY;     // uploaded 1–3 days later
+    r.hist.push({ts: Math.min(upTs, now - DAY), who:'Casey', what:'Shot → Uploaded'});
+  }
+});
+/* newest first */
+R.forEach(r => r.hist.sort((a,b)=> b.ts - a.ts));
+
+const SLOW = [];   /* sales data removed for the public demo */
+
+/* ---- this week's sample looks ---- */
+const LOOKS = [
+  {who:'Alex',   ring:'Ring 1', items:['F1-133|White','FD-185|Black','FD-190|Navy']},
+  {who:'Jordan',ring:'Ring 3 + 4', items:['F1-123|Brown Multi','F1-118|Bordeaux','F1-143|Dark Hazelnut']},
+  {who:'Sam',ring:'Ring 2', items:['F1-108|White','F1-142|Dark Hazelnut','F1-134|Black']},
+  {who:'Morgan',  ring:'Ring 4', items:['F1-116|Red','FD-179|Dark Denim','F1-138|Baby Blue']}
+];
+
+/* ============================================================
+   STATE + HELPERS
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const get = id => R.find(r=>r.id===id);
+const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* ---- who is using the app ---- */
+let ROSTER = ['Maddie','Alex','Riley','Sam','Casey','Jordan','Morgan','Taylor'];
+let ME = null;
+
+const initials = n => n.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+const tidy = n => n.trim().replace(/\s+/g,' ');
+const inRoster = n => ROSTER.some(x => x.toLowerCase() === n.toLowerCase());
+
+function drawSignin(){
+  $('#whoGrid').innerHTML = ROSTER.map(n=>
+    `<button class="who" data-who="${esc(n)}">
+       <span class="ini">${esc(initials(n))}</span>
+       <span>${esc(n)}</span>
+     </button>`).join('');
+  $('#whoGrid').onclick = e => {
+    const b = e.target.closest('[data-who]'); if(!b) return;
+    signIn(b.dataset.who);
+  };
+}
+$('#whoOther').oninput = e => {
+  $('#whoGo').disabled = tidy(e.target.value).length < 2;
+};
+$('#whoOther').onkeydown = e => {
+  if (e.key==='Enter' && !$('#whoGo').disabled) addAndSignIn(tidy($('#whoOther').value));
+};
+$('#whoGo').onclick = () => addAndSignIn(tidy($('#whoOther').value));
+
+/* A name typed at sign-in joins the roster, so the next person can just tap it.
+   If it already exists in another casing, adopt the roster's spelling — otherwise
+   "priya" and "Priya" would appear as two people in the history. */
+function addAndSignIn(name){
+  const existing = ROSTER.find(x => x.toLowerCase() === name.toLowerCase());
+  if (existing) return signIn(existing);
+  ROSTER.push(name); drawSignin(); signIn(name);
+}
+
+function signIn(name){
+  ME = name;
+  $('#signin').classList.add('gone');
+  $('#whoami').innerHTML = `<span>${esc(name)}</span><span class="ini">${esc(initials(name))}</span>`;
+  drawAll();
+}
+function signOut(){
+  ME = null;
+  $('#whoOther').value = ''; $('#whoGo').disabled = true;
+  $('#settings').classList.add('gone');
+  $('#signin').classList.remove('gone');
+  drawSignin();
+  closeSheet();
+}
+
+/* ---- settings ---- */
+$('#whoami').onclick = openSettings;
+$('#setBack').onclick  = () => $('#settings').classList.add('gone');
+$('#setSwitch').onclick = signOut;
+
+let pendingRemove = null;   // name armed for removal, or null
+
+function openSettings(){
+  if (!ME) return;
+  pendingRemove = null;
+  drawSettings();
+  $('#settings').classList.remove('gone');
+  closeSheet();
+}
+
+function drawSettings(){
+  $('#setMe').innerHTML = `
+    <span class="ini">${esc(initials(ME))}</span>
+    <div><div class="nm">${esc(ME)}</div>
+    <div class="sub">Signed in</div></div>`;
+
+  $('#setCount').textContent = ROSTER.length + (ROSTER.length===1?' name':' names');
+  $('#setRoster').innerHTML = ROSTER.length
+    ? ROSTER.map(n=>{
+        const me = n.toLowerCase() === (ME||'').toLowerCase();
+        const arm = (n === pendingRemove);
+        if (arm) return `<div class="rrow arm">
+            <span class="nm">Remove ${esc(n)}?</span>
+            <button class="rcancel" data-cancel="1">Cancel</button>
+            <button class="rconfirm" data-yes="${esc(n)}">Remove</button>
+          </div>`;
+        return `<div class="rrow ${me?'isme':''}">
+          <span class="ini">${esc(initials(n))}</span>
+          <span class="nm">${esc(n)}</span>
+          ${me
+            ? `<span class="youtag">You</span>`
+            : `<button class="rm" data-rm="${esc(n)}">Remove</button>`}
+        </div>`;
+      }).join('')
+    : `<div class="hempty">Nobody on the list. Type a name below, or sign in with one.</div>`;
+}
+
+/* Bound once. confirm() is blocked in a sandboxed frame, so the row
+   arms itself instead: tap Remove, then confirm on the same row. */
+$('#setRoster').addEventListener('click', e => {
+  const arm = e.target.closest('[data-rm]');
+  if (arm){ pendingRemove = arm.dataset.rm; drawSettings(); return; }
+
+  if (e.target.closest('[data-cancel]')){ pendingRemove = null; drawSettings(); return; }
+
+  const yes = e.target.closest('[data-yes]');
+  if (yes){
+    const n = yes.dataset.yes;
+    ROSTER = ROSTER.filter(x => x !== n);
+    pendingRemove = null;
+    drawSettings(); drawSignin();
+    toast(n + ' removed from sign-in');
+  }
+});
+
+$('#setNew').oninput = e => {
+  const v = tidy(e.target.value);
+  $('#setAdd').disabled = v.length < 2 || inRoster(v);
+};
+$('#setNew').onkeydown = e => {
+  if (e.key==='Enter' && !$('#setAdd').disabled) addName();
+};
+$('#setAdd').onclick = addName;
+
+function addName(){
+  const n = tidy($('#setNew').value);
+  if (n.length < 2 || inRoster(n)) return;
+  ROSTER.push(n);
+  $('#setNew').value = ''; $('#setAdd').disabled = true;
+  drawSettings(); drawSignin();
+  toast(n + ' added');
+}
+let filmColl = 'F126', filmShot = 'all', filmUp = 'all', locFilter = 'all', locColl = 'all', openId = null, sheetSrc = null;
+let picking = false;
+const picks = new Set();
+let locPicking = false;
+const locPicks = new Set();
+
+function today(){ return new Date('2026-07-08'); }
+function overdue(r){ return r.store && r.due && new Date(r.due) < today(); }
+function daysLeft(r){ return Math.round((new Date(r.due)-today())/864e5); }
+function sw(c,extra=''){
+  const hex = COLOR[c]||'#CCC';
+  const bd = (hex==='#FFFFFF'||hex==='#F2EDE2') ? 'border-color:#BBB' : '';
+  return `<div class="swatch ${extra}" style="background:${hex};${bd}"></div>`;
+}
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(t._x); t._x=setTimeout(()=>t.classList.remove('on'),1700); }
+/* Every mutation writes one history entry: what, who, when. */
+function log(r, what, extra){
+  r.hist.unshift({
+    ts: Date.now(),
+    who: ME || 'Unknown',
+    what,
+    ...(extra||{})
+  });
+}
+
+/* "Today", "Yesterday", "Monday", "Jun 15" */
+function when(ts){
+  const d = new Date(ts), now = new Date();
+  const day = x => new Date(x.getFullYear(), x.getMonth(), x.getDate());
+  const days = Math.round((day(now) - day(d)) / 864e5);
+  if (days === 0) return 'Today';
+  if (days === 1) return 'Yesterday';
+  if (days < 7)   return d.toLocaleDateString('en-US',{weekday:'long'});
+  const opts = {month:'short', day:'numeric'};
+  if (d.getFullYear() !== now.getFullYear()) opts.year = 'numeric';
+  return d.toLocaleDateString('en-US', opts);
+}
+
+/* The three places a sample can be while it's in circulation.
+   'Store' is a fourth state, reachable only by returning a loan to the Flagship. */
+const LOCS = ['Office A','Office B','Sent out'];
+const LOC_LABEL = {'Office A':'Office A','Office B':'Office B','Sent out':'Sent out','Store':'At Flagship'};
+
+/* class that colours a pill or a select by where the thing is */
+function locCls(r){
+  if (r.store && r.loc !== 'Store') return 'atstore';
+  if (r.loc === 'Office A') return 'at666';
+  if (r.loc === 'Office B') return 'at100';
+  if (r.loc === 'Sent out') return 'atsent';
+  return 'atflag';
+}
+function locText(r){
+  if (r.store && r.loc !== 'Store')
+    return overdue(r) ? 'Late ' + Math.abs(daysLeft(r)) + 'd' : r.loc;
+  return LOC_LABEL[r.loc] || r.loc;
+}
+
+/* A rounded-rect dropdown that changes a record's location in place. */
+function locSelect(r, cls){
+  const opts = LOCS.map(L =>
+    `<option value="${L}" ${r.loc===L?'selected':''}>${LOC_LABEL[L]}</option>`).join('');
+  const dead = (r.loc === 'Store')
+    ? `<option value="Store" selected>${LOC_LABEL.Store}</option>` : '';
+  return `<span class="locsel ${locCls(r)} ${cls||''}">
+    <select data-loc="${r.id}" aria-label="Location of ${esc(r.name)} ${esc(r.color)}">
+      ${dead}${opts}
+    </select>
+    <span class="locsel-txt">${esc(locText(r))}</span>
+    <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.5L5 5l4-3.5"/></svg>
+  </span>`;
+}
+
+/* One handler for every location dropdown, wherever it is rendered. */
+function bindLocSelects(root){
+  root.addEventListener('change', e => {
+    const s = e.target.closest('[data-loc]'); if (!s) return;
+    const r = get(s.dataset.loc);
+    const dest = s.value;
+    if (dest === r.loc) return;
+    const from = r.loc === 'Sent out' && r.holder ? r.holder : LOC_LABEL[r.loc] || r.loc;
+    r.loc = dest;
+    if (dest !== 'Sent out') r.holder = '';
+    log(r, from + ' → ' + LOC_LABEL[dest]);
+    toast(esc(r.color) + ' · ' + LOC_LABEL[dest]);
+    drawAll();
+    if (openId === r.id) openSheet(openId, sheetSrc);
+  });
+}
+
+
+/* ============================================================
+   FILM  — Tap a dot. That's it.
+   ============================================================ */
+function matchStatus(r){
+  if (filmShot === 'yes' && !r.shot) return false;
+  if (filmShot === 'no'  &&  r.shot) return false;
+  if (filmUp   === 'yes' && !r.up)   return false;
+  if (filmUp   === 'no'  &&  r.up)   return false;
+  return true;
+}
+const anyFilter = () => filmShot!=='all' || filmUp!=='all';
+const filmQ = () => $('#fq').value.trim().toLowerCase();
+const searching = () => filmQ().length > 0;
+
+/* When searching, scope is every collection. Otherwise, the selected one. */
+function filmScope(){
+  const q = filmQ();
+  if (!q) return R.filter(r=>r.coll===filmColl);
+  return R.filter(r =>
+    (r.sn+' '+r.name+' '+r.color+' '+r.fab).toLowerCase().includes(q));
+}
+function shownRows(){
+  return filmScope().filter(matchStatus);
+}
+
+function drawFilm(){
+  const q = filmQ();
+  const bar = $('#film-bar');
+  const colls = ['F126','T00'];
+  bar.innerHTML = colls.map(c=>
+    `<button class="chip bare ${(!q && c===filmColl)?'on':''}" data-c="${c}">${COLL[c]}</button>`).join('');
+  bar.classList.toggle('muted', !!q);
+  bar.onclick = e => { const b=e.target.closest('[data-c]'); if(!b)return;
+    filmColl=b.dataset.c;
+    if (q){ $('#fq').value=''; }        // picking a collection exits search
+    clearPicks(); drawFilm(); window.scrollTo(0,0); };
+
+  const all = filmScope();
+  const n = {
+    shotYes: all.filter(r=>r.shot).length,
+    shotNo:  all.filter(r=>!r.shot).length,
+    upYes:   all.filter(r=>r.up).length,
+    upNo:    all.filter(r=>!r.up).length
+  };
+
+  /* filter panel */
+  const pill = (c) => `<b class="ct${c===0?' zero':''}">${c}</b>`;
+  $('#pShot').innerHTML =
+    `<button class="chip bare ${filmShot==='all'?'on':''}" data-s="all">Any</button>`
+  + `<button class="chip ${filmShot==='no'?'on':''}" data-s="no">Not shot${pill(n.shotNo)}</button>`
+  + `<button class="chip ${filmShot==='yes'?'on':''}" data-s="yes">Shot${pill(n.shotYes)}</button>`;
+  $('#pUp').innerHTML =
+    `<button class="chip bare ${filmUp==='all'?'on':''}" data-u="all">Any</button>`
+  + `<button class="chip ${filmUp==='no'?'on':''}" data-u="no">Not uploaded${pill(n.upNo)}</button>`
+  + `<button class="chip ${filmUp==='yes'?'on':''}" data-u="yes">Uploaded${pill(n.upYes)}</button>`;
+  $('#filterDot').classList.toggle('on', anyFilter());
+
+  const rows = shownRows();
+
+  /* action row centre label */
+  $('#arcount').textContent = picking ? ''
+    : q ? rows.length + (rows.length===1?' match':' matches')
+    : (anyFilter() ? rows.length + ' of ' + all.length : all.length + ' items');
+  $('#selectBtn').textContent = picking ? 'Done' : 'Select';
+
+  /* progress reports on whatever is in scope */
+  $('#p-label').textContent = q ? 'Search results' : 'Tolstoys';
+  $('#p-shot').textContent = n.shotYes;
+  $('#p-tot').textContent  = all.length;
+  $('#p-up').textContent   = n.upYes + ' uploaded';
+  $('#p-bar').style.width  = (all.length ? n.shotYes/all.length*100 : 0) + '%';
+
+  if (!rows.length){
+    $('#film-list').innerHTML = q
+      ? `<div class="empty"><b>No match for “${esc(q)}”</b>
+          Try a style number like F1-102, or a name like “trouser”.</div>`
+      : `<div class="empty"><b>Nothing matches</b>
+          Open Filter and clear a selection to see more.</div>`;
+    $('#film-list').onclick = null;
+    return;
+  }
+
+  /* group by collection+fabric so a search never merges two collections */
+  const byFab = {};
+  rows.forEach(r=>{
+    const key = r.coll + '\u0000' + r.fab;
+    (byFab[key] ||= {})[r.sn] ||= []; byFab[key][r.sn].push(r);
+  });
+
+  $('#film-list').innerHTML = Object.keys(byFab).sort().map(key=>{
+    const [coll, fab] = key.split('\u0000');
+    const styles = byFab[key];
+    const shown = Object.values(styles).flat();
+    const done = shown.filter(r=>r.shot).length;
+    return `<div class="fab">
+      <div class="fab-h">
+        <div class="fab-name">${esc(fab)}${q?`<span class="colltag">${COLL[coll]}</span>`:''}</div>
+        <div class="fab-n">${done}/${shown.length}</div>
+      </div>
+      ${Object.keys(styles).map(sn=>{
+        const g = styles[sn];
+        return `<div class="style">
+          <div class="style-h">
+            <div class="style-name">${esc(g[0].short)}</div>
+            <div class="style-sn">${sn}</div>
+          </div>
+          <div class="dots">${g.map(r=>{
+            const away = r.loc!=='Office A';
+            const cls = [r.shot?'shot':'', r.up?'up':'', away?'away':'',
+                         picks.has(r.id)?'pick':''].join(' ');
+            return `<div class="dot ${cls}" role="button" tabindex="0" data-id="${r.id}">
+              <span class="pickmark"></span>
+              <button class="tick" data-reset="${r.id}"
+                aria-label="Reset ${esc(r.name)} ${esc(r.color)} to not shot">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12.5 L10.5 16 L17 8.5"/></svg>
+              </button>
+              ${sw(r.color)}
+              <span class="cname">${esc(r.color)}</span>
+              <span class="away-tag ${r.loc==='Sent out'?'sent':''}">${r.loc==='Sent out'?'Sent':r.loc}</span>
+            </div>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+
+  $('#film-list').onclick = null;   // handled by the pointer listeners below
+}
+$('#fq').oninput = () => { clearPicks(); drawFilm(); drawSelbar(); };
+
+/* ------------------------------------------------------------
+   Tap = advance status.  Long-press = open details.
+   Bound once on the container so re-renders don't lose it.
+   ------------------------------------------------------------ */
+const HOLD_MS = 420;      // long enough not to fire on a quick tap
+const SLOP    = 10;       // px of finger travel before we call it a scroll
+let press = null;
+
+function pressStart(e){
+  const d = e.target.closest('.dot');
+  if (!d) return;
+  // let the reset tick and selection mode keep their own click behaviour
+  if (e.target.closest('[data-reset]')) return;
+  if (picking) return;
+
+  press = { id:d.dataset.id, el:d, x:e.clientX, y:e.clientY, fired:false };
+  d.classList.add('holding');
+  press.timer = setTimeout(() => {
+    if (!press) return;
+    press.fired = true;
+    press.el.classList.remove('holding');
+    if (navigator.vibrate) navigator.vibrate(12);
+    openSheet(press.id, 'film');
+    press = null;
+  }, HOLD_MS);
+}
+
+function pressMove(e){
+  if (!press) return;
+  if (Math.abs(e.clientX-press.x) > SLOP || Math.abs(e.clientY-press.y) > SLOP)
+    pressCancel();
+}
+
+function pressCancel(){
+  if (!press) return;
+  clearTimeout(press.timer);
+  press.el.classList.remove('holding');
+  press = null;
+}
+
+function pressEnd(e){
+  if (!press) return;
+  clearTimeout(press.timer);
+  press.el.classList.remove('holding');
+  const { id, fired } = press;
+  press = null;
+  if (fired) return;                 // long-press already handled it
+
+  const r = get(id);
+  if (r.loc !== 'Office A'){ openSheet(r.id,'film'); return; }
+  if (!r.shot){ r.shot = true; log(r,'Not shot → Shot'); toast('Filmed · '+r.color); }
+  else if (!r.up){ r.up = true; log(r,'Shot → Uploaded'); toast('Uploaded · '+r.color); }
+  else { toast('Already uploaded · hold to see details'); return; }
+  drawAll();
+}
+
+$('#hintX').onclick = () => $('#hint').classList.add('gone');
+
+const FL = $('#film-list');
+FL.addEventListener('pointerdown',   pressStart);
+FL.addEventListener('pointermove',   pressMove);
+FL.addEventListener('pointerup',     pressEnd);
+FL.addEventListener('pointercancel', pressCancel);
+FL.addEventListener('pointerleave',  pressCancel);
+FL.addEventListener('contextmenu',   e => { if (e.target.closest('.dot')) e.preventDefault(); });
+
+/* the reset tick and selection taps still use click */
+FL.addEventListener('click', e => {
+  const t = e.target.closest('[data-reset]');
+  if (t && !picking){
+    const r = get(t.dataset.reset);
+    const before = r.up ? 'Uploaded' : 'Shot';
+    r.shot = false; r.up = false;
+    log(r, before + ' → Not shot');
+    toast('Reset · ' + r.color);
+    drawAll(); return;
+  }
+  if (!picking) return;
+  const d = e.target.closest('.dot'); if(!d) return;
+  const r = get(d.dataset.id);
+  if (r.loc !== 'Office A') return;
+  picks.has(r.id) ? picks.delete(r.id) : picks.add(r.id);
+  drawFilm(); drawSelbar();
+});
+
+/* ---- filter panel wiring ---- */
+$('#filterBtn').onclick = () => $('#filterPanel').classList.toggle('on');
+$('#pShot').onclick = e => { const b=e.target.closest('[data-s]'); if(!b)return;
+  filmShot = b.dataset.s; clearPicks(); drawFilm(); };
+$('#pUp').onclick = e => { const b=e.target.closest('[data-u]'); if(!b)return;
+  filmUp = b.dataset.u; clearPicks(); drawFilm(); };
+$('#clearFilters').onclick = () => {
+  filmShot='all'; filmUp='all'; $('#filterPanel').classList.remove('on');
+  clearPicks(); drawFilm(); window.scrollTo(0,0);
+};
+
+/* ---- selection mode ---- */
+function clearPicks(){ picks.clear(); }
+function drawSelbar(){
+  $('#selCount').textContent = picks.size + ' selected';
+  $('#selbar').querySelectorAll('[data-set]').forEach(b=> b.disabled = !picks.size);
+  const here = shownRows().filter(r=>r.loc==='Office A');
+  const allPicked = here.length && here.every(r=>picks.has(r.id));
+  $('#selAll').textContent = allPicked ? 'Clear' : 'Select all ' + here.length;
+}
+$('#selectBtn').onclick = () => {
+  picking = !picking;
+  if (!picking) clearPicks();
+  else $('#filterPanel').classList.remove('on');
+  document.body.classList.toggle('selecting', picking);
+  drawFilm(); drawSelbar();
+};
+$('#selAll').onclick = () => {
+  const here = shownRows().filter(r=>r.loc==='Office A');
+  const allPicked = here.length && here.every(r=>picks.has(r.id));
+  if (allPicked) clearPicks(); else here.forEach(r=>picks.add(r.id));
+  drawFilm(); drawSelbar();
+};
+$('#selbar').onclick = e => {
+  const b = e.target.closest('[data-set]'); if(!b || !picks.size) return;
+  const v = b.dataset.set;
+  const label = v==='none'?'not shot':v==='shot'?'shot':'uploaded';
+  const nsel = picks.size;
+  picks.forEach(id => {
+    const r = get(id);
+    const before = r.up ? 'Uploaded' : r.shot ? 'Shot' : 'Not shot';
+    r.shot = (v!=='none');
+    r.up   = (v==='up');
+    const after = v==='none'?'Not shot':v==='shot'?'Shot':'Uploaded';
+    if (before !== after) log(r, before + ' → ' + after + ' (bulk)');
+  });
+  clearPicks();
+  toast(nsel + ' set to ' + label);
+  drawAll(); drawSelbar();
+};
+
+/* ============================================================
+   LOCATE — everyone's view.
+   ============================================================ */
+function locRows(){
+  const q = $('#q').value.trim().toLowerCase();
+  let rows = R.slice();
+  if (locColl !== 'all') rows = rows.filter(r=>r.coll===locColl);
+  if (locFilter==='store') rows = rows.filter(r=>r.store);
+  else if (locFilter==='late') rows = rows.filter(overdue);
+  else if (locFilter!=='all') rows = rows.filter(r=>r.loc===locFilter);
+  if (q) rows = rows.filter(r =>
+    (r.sn+' '+r.name+' '+r.color+' '+r.fab).toLowerCase().includes(q));
+  rows.sort((a,b)=> (overdue(b)-overdue(a)) || a.name.localeCompare(b.name));
+  return rows.slice(0,300);
+}
+
+function drawLoc(){
+  /* location filters — counts respect the collection filter */
+  const pool = locColl==='all' ? R : R.filter(r=>r.coll===locColl);
+  const bar = $('#loc-bar');
+  const counts = {
+    all: pool.length,
+    'Office A': pool.filter(r=>r.loc==='Office A').length,
+    'Office B': pool.filter(r=>r.loc==='Office B').length,
+    'store': pool.filter(r=>r.store).length,
+    'Sent out': pool.filter(r=>r.loc==='Sent out').length,
+    'late': pool.filter(overdue).length
+  };
+  const F = [['all','Everything'],['Office A','At Office A'],['Office B','At Office B'],
+             ['store','Store loans'],['Sent out','Sent out'],['late','Overdue']];
+  bar.innerHTML = F.map(([k,l])=>{
+    const c = counts[k];
+    const mod = c===0 ? ' zero' : (k==='late' ? ' warn' : '');
+    return `<button class="chip ${k===locFilter?'on':''}" data-f="${k}">${l}<b class="ct${mod}">${c}</b></button>`;
+  }).join('');
+  bar.onclick = e => { const b=e.target.closest('[data-f]'); if(!b)return;
+    locFilter=b.dataset.f; locPicks.clear(); drawLoc(); drawLocSelbar(); };
+
+  /* collection filters — counts respect the location filter */
+  const CF = [['all','All'],['F126','Fall 1'],['T00','Fundamentals']];
+  const inLoc = r => locFilter==='all' ? true
+    : locFilter==='store' ? r.store
+    : locFilter==='late'  ? overdue(r)
+    : r.loc===locFilter;
+  $('#loc-coll').innerHTML = CF.map(([k,l])=>{
+    const c = (k==='all' ? R : R.filter(r=>r.coll===k)).filter(inLoc).length;
+    return `<button class="chip ${k===locColl?'on':''}" data-lc="${k}">${l}<b class="ct${c===0?' zero':''}">${c}</b></button>`;
+  }).join('');
+  $('#loc-coll').onclick = e => { const b=e.target.closest('[data-lc]'); if(!b)return;
+    locColl=b.dataset.lc; locPicks.clear(); drawLoc(); drawLocSelbar(); };
+
+  const rows = locRows();
+  $('#locCount').textContent = locPicking ? '' : rows.length + ' shown';
+  $('#locSelectBtn').textContent = locPicking ? 'Done' : 'Select';
+
+  if (!rows.length){
+    $('#loc-list').innerHTML = `<div class="empty"><b>Nothing here</b>
+      Try a style number like F1-102, or a name like “trouser”.</div>`;
+    $('#loc-list').onclick = null;
+    return;
+  }
+  $('#loc-list').innerHTML = rows.map(r=>{
+    const late = overdue(r);
+    const picked = locPicks.has(r.id) ? 'pick' : '';
+    return `<div class="row ${late?'overdue':''} ${picked}">
+      <button class="rowmain" data-id="${r.id}">
+        <span class="rowpick"></span>
+        ${sw(r.color)}
+        <div class="body">
+          <div class="r1">${esc(r.name)}</div>
+          <div class="r2">${esc(r.color)} · ${r.sn} · ${COLL[r.coll]}</div>
+        </div>
+      </button>
+      ${locSelect(r)}
+    </div>`;
+  }).join('');
+  $('#loc-list').onclick = e => {
+    const b = e.target.closest('[data-id]'); if(!b) return;
+    if (locPicking){
+      const id = b.dataset.id;
+      locPicks.has(id) ? locPicks.delete(id) : locPicks.add(id);
+      drawLoc(); drawLocSelbar(); return;
+    }
+    openSheet(b.dataset.id,'loc');
+  };
+}
+$('#q').oninput = () => { if(locPicking) locPicks.clear(); drawLoc(); drawLocSelbar(); };
+
+/* ---- locate selection mode ---- */
+function drawLocSelbar(){
+  $('#locSelCount').textContent = locPicks.size + ' selected';
+  $('#locSelbar').querySelectorAll('[data-move]').forEach(b=> b.disabled = !locPicks.size);
+
+  const here = locRows();
+  const allPicked = here.length && here.every(r=>locPicks.has(r.id));
+  $('#locSelAll').textContent = allPicked ? 'Clear' : 'Select all ' + here.length;
+
+  const sel = [...locPicks].map(get);
+  const loans = sel.filter(r=>r.store).length;
+  const note = $('#locSelNote');
+  if (loans){
+    note.innerHTML = `<b>${loans} store loan${loans===1?'':'s'}</b> in this selection. `
+      + `Moving keeps the return date. Return to Flagship one at a time.`;
+    note.classList.add('on');
+  } else note.classList.remove('on');
+}
+$('#locSelectBtn').onclick = () => {
+  locPicking = !locPicking;
+  if (!locPicking) locPicks.clear();
+  document.body.classList.toggle('locselecting', locPicking);
+  drawLoc(); drawLocSelbar();
+};
+$('#locSelAll').onclick = () => {
+  const here = locRows();
+  const allPicked = here.length && here.every(r=>locPicks.has(r.id));
+  if (allPicked) locPicks.clear(); else here.forEach(r=>locPicks.add(r.id));
+  drawLoc(); drawLocSelbar();
+};
+$('#locSelbar').onclick = e => {
+  const b = e.target.closest('[data-move]'); if(!b || !locPicks.size) return;
+  const dest = b.dataset.move;
+  const ids = [...locPicks];
+  let moved = 0, already = 0;
+  ids.forEach(id => {
+    const r = get(id);
+    if (r.loc === dest){ already++; return; }
+    const from = r.loc === 'Sent out' && r.holder ? r.holder : r.loc;
+    r.loc = dest; r.holder = '';
+    log(r, from + ' → ' + dest);
+    moved++;
+  });
+  locPicks.clear();
+  toast(moved
+    ? moved + ' moved to ' + dest + (already ? ' · ' + already + ' already there' : '')
+    : 'All ' + already + ' already at ' + dest);
+  drawAll(); drawLocSelbar();
+};
+
+/* ============================================================
+   STYLE CLASS
+   ============================================================ */
+function drawClass(){
+  $('#slow-list').innerHTML = SLOW.map(s=>{
+    const r = get(s.id); if(!r) return '';
+    return `<button class="slow-card ${s.used?'used':''}" data-s="${s.id}">
+      ${sw(r.color)}
+      <div class="sc-n">${esc(r.name)}</div>
+      <div class="sc-c">${esc(r.color)}</div>
+      <div class="sc-st">
+        <span>${s.sell}% sold</span><b>${s.used?'IN LOOK':s.stock+' left'}</b>
+      </div>
+    </button>`;
+  }).join('');
+  $('#slow-list').onclick = e => {
+    const c = e.target.closest('[data-s]'); if(!c)return;
+    const s = SLOW.find(x=>x.id===c.dataset.s);
+    s.used = !s.used;
+    toast(s.used ? 'Added to this week' : 'Removed');
+    drawClass(); badges();
+  };
+
+  $('#looks').innerHTML = LOOKS.map(l=>`
+    <div class="look">
+      <div class="look-h">
+        <div class="look-who">${l.who}</div>
+        <div class="look-ring">${l.ring}</div>
+      </div>
+      ${l.items.map(id=>{
+        const r = get(id); if(!r) return '';
+        const slow = SLOW.find(s=>s.id===id);
+        const tagCls = locCls(r);
+        return `<div class="pull">
+          ${sw(r.color)}
+          <div class="p-n">${esc(r.name)}${slow?'<em>slow seller</em>':''}</div>
+          <div class="p-s ${tagCls}">${esc(LOC_LABEL[r.loc]||r.loc)}</div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+
+  // pull list = every look item not already at Office A
+  const need = [...new Set(LOOKS.flatMap(l=>l.items))].map(get).filter(r=>r && r.loc!=='Office A');
+  const from100 = need.filter(r=>r.loc==='Office B');
+  const fromOut = need.filter(r=>r.loc!=='Office B');
+
+  $('#pull').innerHTML = `
+    <div class="pl-h">
+      <div><div class="eyebrow">Tuesday</div><h2 class="h" style="margin-top:4px">Pull list</h2></div>
+      <div class="eyebrow">${need.length} item${need.length===1?'':'s'}</div>
+    </div>
+    ${!need.length ? `<div class="empty" style="padding:32px 0"><b>Everything's at Office A</b>Nothing to pull this week.</div>` : ''}
+    ${from100.length ? `<div class="pl-grp">
+      <div class="pl-lab">Uber from Office B<span>${from100.length}</span></div>
+      ${from100.map(pullRow).join('')}</div>` : ''}
+    ${fromOut.length ? `<div class="pl-grp">
+      <div class="pl-lab">Track down<span>${fromOut.length}</span></div>
+      ${fromOut.map(pullRow).join('')}</div>` : ''}`;
+
+  $('#pull').onclick = e => {
+    const b = e.target.closest('[data-id]'); if(b) openSheet(b.dataset.id,'loc');
+  };
+}
+const pullRow = r => `<button class="pull" data-id="${r.id}" style="width:100%;text-align:left">
+  ${sw(r.color)}
+  <div class="p-n">${esc(r.name)}<span class="dim"> · ${esc(r.color)}</span></div>
+  <div class="p-s dim">${esc(LOC_LABEL[r.loc]||r.loc)}</div>
+</button>`;
+
+/* ============================================================
+   DETAIL SHEET
+   ============================================================ */
+const slug = s => s.toLowerCase()
+  .replace(/&/g,' and ')
+  .replace(/[’'`]/g,'')
+  .replace(/[^a-z0-9]+/g,'-')
+  .replace(/^-+|-+$/g,'');
+
+function openSheet(id, src){
+  openId = id; sheetSrc = src;
+  const r = get(id);
+  const late = overdue(r);
+  const status = r.up ? 'up' : r.shot ? 'shot' : 'none';
+  const label = r.up ? 'Uploaded' : r.shot ? 'Shot' : 'Not shot';
+  const editable = (src === 'film');
+  const acts = [];
+
+  /* The location dropdown handles every move between Office A, Office B and Sent out.
+     Returning a store loan is different: it ends the loan and leaves circulation. */
+  if (r.store && r.loc !== 'Store')
+    acts.push(`<button class="act warn" data-a="return">Return to Flagship</button>`);
+
+
+  $('#sheet').innerHTML = `
+    <div class="grab"></div>
+    ${SKETCH[r.sn]
+      ? `<div class="flat"><img src="data:image/png;base64,${SKETCH[r.sn]}"
+           alt="Technical flat of ${esc(r.name)}"></div>`
+      : `<div class="flat noflat">Product drawing hidden in demo</div>`}
+    <div class="sheet-h">
+      ${sw(r.color)}
+      <div style="flex:1">
+        <div class="sheet-title">${esc(r.name)}</div>
+        <div class="sheet-sub">${esc(r.color)} · ${r.sn}</div>
+      </div>
+    </div>
+
+    <div class="statusbox ${editable?'':'ro'}">
+      <label class="eyebrow" ${editable?'for="st"':''}>Tolstoy status</label>
+      ${editable
+        ? `<select id="st">
+            <option value="none" ${status==='none'?'selected':''}>Not shot</option>
+            <option value="shot" ${status==='shot'?'selected':''}>Shot</option>
+            <option value="up"   ${status==='up'  ?'selected':''}>Uploaded</option>
+          </select>`
+        : `<div class="rostat">${label}</div>
+           <div class="rohint">Change this on the Tolstoys page.</div>`}
+    </div>
+
+    <div class="meta">
+      <div class="metaloc"><span>Location</span>${locSelect(r,'big')}</div>
+      <div><span>Collection</span><span>${COLL[r.coll]}</span></div>
+      <div><span>Sizes</span><span class="mono">${r.sizes}</span></div>
+      ${r.store?`<div><span>Store loan</span><span style="color:${late?'var(--alert)':'inherit'}">
+        ${late?'Overdue '+Math.abs(daysLeft(r))+' days':'Due in '+daysLeft(r)+' days'}</span></div>`:''}
+    </div>
+
+    ${acts.length?`<div class="acts">${acts.join('')}</div>`:''}
+
+    <div class="hist">
+      <div class="hist-h">
+        <span class="eyebrow">History</span>
+        <span class="eyebrow dim">${r.hist.length} ${r.hist.length===1?'entry':'entries'}</span>
+      </div>
+      ${r.hist.length
+        ? r.hist.map(h=>`
+            <div class="hrow">
+              <span class="hini">${esc(initials(h.who))}</span>
+              <div class="hbody">
+                <div class="hwhat">${esc(h.what)}</div>
+                <div class="hmeta">${esc(h.who)} · ${esc(when(h.ts))}</div>
+              </div>
+            </div>`).join('')
+        : `<div class="hempty">No changes recorded yet.</div>`}
+    </div>`;
+
+  if (editable) $('#st').onchange = e => {
+    const v = e.target.value;
+    const before = r.up ? 'Uploaded' : r.shot ? 'Shot' : 'Not shot';
+    r.shot = (v!=='none');
+    r.up   = (v==='up');
+    const after = v==='none'?'Not shot':v==='shot'?'Shot':'Uploaded';
+    log(r, before + ' → ' + after);
+    toast(after);
+    drawAll();
+    openSheet(id, src);          // refresh so the new entry appears
+  };
+  $('#sheet').onclick = e => {
+    const b = e.target.closest('[data-a]'); if(!b) return;
+    act(b.dataset.a, r);
+  };
+  $('#scrim').classList.add('on');
+  $('#sheet').classList.add('on');
+}
+function closeSheet(){
+  $('#scrim').classList.remove('on');
+  $('#sheet').classList.remove('on');
+  openId = null; sheetSrc = null;
+}
+$('#scrim').onclick = closeSheet;
+
+function act(a, r){
+  if (a==='return'){
+    const from = r.loc;
+    r.store=false; r.due=null; r.loc='Store';
+    log(r, from + ' → Flagship (returned)');
+    toast('Returned to Flagship');
+  }
+  closeSheet(); drawAll();
+}
+
+/* ============================================================
+   SHELL
+   ============================================================ */
+function badges(){
+  const unshot = R.filter(r=>!r.shot && r.loc==='Office A').length;
+  $('#b-film').textContent = unshot;
+  const need = [...new Set(LOOKS.flatMap(l=>l.items))].map(get).filter(r=>r&&r.loc!=='Office A').length;
+  $('#b-class').textContent = need;
+}
+function drawAll(){ drawFilm(); drawLoc(); drawClass(); badges(); drawSelbar(); drawLocSelbar(); }
+
+document.querySelector('nav').onclick = e => {
+  const b = e.target.closest('[data-v]'); if(!b) return;
+  if (picking){ picking=false; clearPicks(); document.body.classList.remove('selecting'); }
+  if (locPicking){ locPicking=false; locPicks.clear(); document.body.classList.remove('locselecting'); }
+  $('#filterPanel').classList.remove('on');
+  document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on', x===b));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on', v.id==='v-'+b.dataset.v));
+  drawFilm(); drawLoc(); drawSelbar(); drawLocSelbar();
+  window.scrollTo(0,0);
+};
+
+/* One change-listener per container. Survives re-renders. */
+bindLocSelects($('#loc-list'));
+bindLocSelects($('#sheet'));
+
+/* Boot: render the roster, wait for someone to say who they are. */
+drawSignin();
+drawAll();
+</script>
+</body>
+</html>
