@@ -629,7 +629,7 @@ footer.site a{text-underline-offset:3px}
       pw.hidden=false;
     }
     setMenu(false);show(null);
-    if(push){try{history.replaceState(null,'','#'+k)}catch(e){}}
+    if(push && location.hash.replace('#','')!==k){try{history.pushState({v:k},'','#'+k)}catch(e){}}
     window.scrollTo(0,0);
   }
   document.addEventListener('click',function(e){
@@ -638,6 +638,7 @@ footer.site a{text-underline-offset:3px}
     if(a.dataset.scroll){var t=document.getElementById(a.dataset.scroll);if(t)t.scrollIntoView();}
   });
   var h=(location.hash||'').replace('#','');go(h||'home',false);
+  window.addEventListener('popstate',function(){go((location.hash||'').replace('#','')||'home',false)});
   if('IntersectionObserver' in window && !(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
     var seen=new WeakSet();
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
